@@ -34,6 +34,17 @@ Required environment variables (`.env`):
 - `USE_EMAIL` — `true` sends a real email via `EMAIL_*`, `false` sends a Pushover push instead
 - `EMAIL_ADDRESS` / `EMAIL_SMTP_SERVER` / `EMAIL_APP_PASSWORD` — required if `USE_EMAIL=true`
 - `PUSHOVER_USER` / `PUSHOVER_TOKEN` — required if `USE_EMAIL=false`
+- `OPENAI_API_KEY` — optional, enables tracing (see below)
+
+### Tracing
+
+Tracing is a separate concern from which provider serves the model calls: the SDK
+records agent/tool spans locally regardless of provider, but the built-in exporter
+uploads that data to OpenAI's tracing platform, which needs a real OpenAI API key to
+authenticate the upload — no OpenAI model calls happen. Set `OPENAI_API_KEY` (a plain
+OpenAI account key, doesn't need billing/credit) to get a trace link printed at the
+start of each run, viewable at platform.openai.com/traces. Leave it unset and tracing
+is disabled automatically.
 
 ## Run
 
