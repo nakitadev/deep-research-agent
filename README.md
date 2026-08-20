@@ -25,6 +25,13 @@ uv sync
 cp .env.example .env   # fill in your API keys
 ```
 
+Or with pip:
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env   # fill in your API keys
+```
+
 Required environment variables (`.env`):
 
 - `OPENROUTER_API_KEY` — every agent's model calls ([openrouter.ai](https://openrouter.ai))
@@ -50,6 +57,7 @@ is disabled automatically.
 
 ```bash
 uv run app.py
+# or: python app.py
 ```
 
 Opens a Gradio UI. Type a research question, hit Investigate, and watch the status
