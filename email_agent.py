@@ -2,7 +2,7 @@ from agents import Agent, function_tool, ModelSettings
 from messenger import send_email, push
 import os
 
-from model_provider import MODEL_NAME
+from model_provider import MODEL
 
 USE_EMAIL = os.getenv("USE_EMAIL", "true").lower() == "true"
 
@@ -30,4 +30,4 @@ You are provided with a detailed report. Use your tool to send an email, convert
 a clean, well presented HTML email with an appropriate subject line.
 """
 
-email_agent = Agent(name="Email Agent", instructions=INSTRUCTIONS, tools=[send_email_tool], model=MODEL_NAME, model_settings=settings)
+email_agent = Agent(name="Email Agent", instructions=INSTRUCTIONS, tools=[send_email_tool], model=MODEL, model_settings=settings)

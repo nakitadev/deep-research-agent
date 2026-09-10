@@ -17,6 +17,7 @@ import os
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from agents import (
+    OpenAIChatCompletionsModel,
     set_default_openai_api,
     set_default_openai_client,
     set_tracing_disabled,
@@ -25,7 +26,8 @@ from agents import (
 
 load_dotenv(override=True)
 
-MODEL_NAME = os.getenv("DEFAULT_MODEL_NAME", "openai/gpt-4.1-mini")
+raw_model = os.getenv("DEFAULT_MODEL_NAME", "nvidia/nemotron-3.5-lightning:free")
+MODEL_NAME = raw_model.removeprefix("openrouter/")
 
 _client = AsyncOpenAI(
     base_url="https://openrouter.ai/api/v1",
@@ -33,6 +35,8 @@ _client = AsyncOpenAI(
 )
 set_default_openai_client(_client, use_for_tracing=False)
 set_default_openai_api("chat_completions")
+
+MODEL = OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=_client)
 
 _tracing_key = os.getenv("OPENAI_API_KEY")
 TRACING_ENABLED = bool(_tracing_key)

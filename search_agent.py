@@ -3,7 +3,7 @@ import os
 import requests
 from agents import Agent, ModelSettings, function_tool
 
-from model_provider import MODEL_NAME
+from model_provider import MODEL
 
 INSTRUCTIONS = """
 You are a research assistant. Given a search term, you search the web for that term and
@@ -32,4 +32,4 @@ def web_search(query: str) -> str:
 settings = ModelSettings(tool_choice="required")
 tools = [web_search]
 
-search_agent = Agent(name="Search Agent", instructions=INSTRUCTIONS, tools=tools, model=MODEL_NAME, model_settings=settings)
+search_agent = Agent(name="Search Agent", instructions=INSTRUCTIONS, tools=tools, model=MODEL, model_settings=settings)

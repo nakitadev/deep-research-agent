@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from agents import Agent
 
-from model_provider import MODEL_NAME
+from model_provider import MODEL
 
 INSTRUCTIONS = """
 You are a senior researcher tasked with writing a cohesive report for a research query.
@@ -18,4 +18,4 @@ class ReportData(BaseModel):
     follow_up_questions: list[str] = Field(description="Suggested topics to research further")
 
 
-writer_agent = Agent(name="Writer Agent", instructions=INSTRUCTIONS, model=MODEL_NAME, output_type=ReportData)
+writer_agent = Agent(name="Writer Agent", instructions=INSTRUCTIONS, model=MODEL, output_type=ReportData)

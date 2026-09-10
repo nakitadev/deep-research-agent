@@ -5,6 +5,8 @@ routed through [OpenRouter](https://openrouter.ai) instead of OpenAI directly. G
 question, and four agents run in sequence: plan a set of web searches, run them in
 parallel, write a long-form markdown report from the results, then email it to you.
 
+![Deep Research Architecture](deep-research.png)
+
 ## How it works
 
 1. **Planner** — turns your query into N search terms with reasoning (`planner_agent.py`)
@@ -71,3 +73,4 @@ updates stream in before the full report renders.
 - `model_provider.py` — configures the OpenRouter client and default model
 - `messenger.py` — SMTP email and Pushover push helpers
 - `styles.py` — theme, CSS and JS for the UI
+- `diagrams/` — interactive architecture and flowchart schematics (`architecture.html`, `flowchart.html`, `index.html`)
